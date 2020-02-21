@@ -6,6 +6,9 @@
             <div class="date">
                 {{ post.published_date }}
             </div>
+            {% if user.is_authenticated %}
+                <a class="btn btn-default" href="{% url 'post_unpublish' pk=post.pk %}">Unpublish</a>
+            {% endif %}
         {% else %}
             <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
