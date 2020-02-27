@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.text import Truncator
 
 
 class Post(models.Model):
@@ -37,4 +38,4 @@ class Comment(models.Model):
         self.save()
 
     def __str__(self):
-        return self.text
+        return Truncator(self.text).words(10)
